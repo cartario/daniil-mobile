@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import {THEME} from '../theme';
 import { Provider } from 'react-redux';
 import {store} from '../store';
+import {EventsNavigator} from '../navigation/EventsStackNavigator';
 
 // import {HomeTabNavigator} from './home-tab-navigator';
 // import {EventsTabNavigator} from './events-tab-navigator';
@@ -41,21 +42,34 @@ const Drawer = createDrawerNavigator();
 //   );
 // };
 
-const Feed = () => {
-  return <View><Text style={{color: THEME.MAIN_COLOR}}>feed</Text></View>
+const Home = () => {
+  return <View><Text style={{color: THEME.MAIN_COLOR}}>Home</Text></View>
 };
 
-const Article = () => {
-  return <View><Text style={{color: THEME.ORANGE_COLOR}}>Article</Text></View>
-}
+const Studios = () => {
+  return <View><Text style={{color: THEME.MAIN_COLOR}}>Studios</Text></View>
+};
+
+const Feedback = () => {
+  return <View><Text style={{color: THEME.MAIN_COLOR}}>Feedback</Text></View>
+};
+
+const About = () => {
+  return <View><Text style={{color: THEME.MAIN_COLOR}}>About</Text></View>
+};
+
+
 
 const MainNavigation = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
         <Drawer.Navigator>
-          <Drawer.Screen name="Feed" component={Feed} />
-          <Drawer.Screen name="Article" component={Article} />
+          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="Events" component={EventsNavigator} />
+          <Drawer.Screen name="Studios" component={Studios} />
+          <Drawer.Screen name="Feedback" component={Feedback} />
+          <Drawer.Screen name="About" component={About} />
         </Drawer.Navigator>
       </NavigationContainer>
     </Provider>
