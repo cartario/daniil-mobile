@@ -5,30 +5,30 @@ import AppLoader from '../components/AppLoader';
 import {THEME} from '../theme';
 import { format } from 'date-fns';
 import ru from 'date-fns/locale/ru';
+import FormJoin from '../components/FormJoin';
 
-const JoinModal = ({ visible, onCancel, eventId }) => {
-  const [event, setEvent] = React.useState();
+const JoinModal = ({ visible, onCancel, itemId , type}) => {
+  
+  const [item, setItem] = React.useState();
 
   React.useEffect(() => {
-    async function fetchEvent() {
+    async function fetchItem() {
       try {
-        const response = await fetch(`https://centerdaniil.ru/api/events/${eventId}`);
+        const response = await fetch(`https://centerdaniil.ru/api/${type}/${itemId}`);
         const data = await response.json();
-        setEvent(data);
-
-       
+        setItem(data);       
       } catch (err) {
         console.log(err);
       }
     }
-    fetchEvent();
+    fetchItem();
   }, []);
 
-  if (!event ) {    
+  if (!item ) {    
     return <AppLoader />;
   }
-
-  const {date, title} = event;
+  
+  const {date, title} = item;
 
   return (
     <Modal animationType="slide" transparent={true} visible={visible} style={styles.modal}>
@@ -42,24 +42,16 @@ const JoinModal = ({ visible, onCancel, eventId }) => {
         </TouchableHighlight>
         <Text style={styles.header}>Хочу записаться</Text>
         
-        <Text >
+        {date && <Text >
         {format(new Date(date), 'dd/MMM/yyyy', { locale: ru })}
-      </Text>
-      <Text style={styles.headerEvent}>{title}</Text>
-        <View style={styles.text}>
-          <Text>
-            1. Смотри туториал  {eventId}        
-          </Text>
-          <Text>           
-            2. Жми start и повторяй движения          
-          </Text>
-          <Text>         
-            3. Поставь  себе оценку, двигайся дальше.         
-          </Text>
-          <Text>          
-            4.Удачи и процветания! У тебя все получится!
-          </Text>   
-        </View>              
+        </Text>}
+
+        <Text style={styles.headerEvent}>{title}</Text>
+
+        {date ? <FormJoin title={item.title} date={item.date}/>   :
+        <FormJoin title={item.title} type={type}/>   
+        }
+
       </View>
     </Modal>
   );

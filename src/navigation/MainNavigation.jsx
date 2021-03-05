@@ -6,6 +6,7 @@ import {THEME} from '../theme';
 import { Provider } from 'react-redux';
 import {store} from '../store';
 import {EventsNavigator} from '../navigation/EventsStackNavigator';
+import {StudiosNavigator} from '../navigation/StudiosStackNavigator';
 
 // import {HomeTabNavigator} from './home-tab-navigator';
 // import {EventsTabNavigator} from './events-tab-navigator';
@@ -67,7 +68,7 @@ const MainNavigation = () => {
         <Drawer.Navigator>
           <Drawer.Screen name="Home" component={Home} />
           <Drawer.Screen name="Events" component={EventsNavigator} />
-          <Drawer.Screen name="Studios" component={Studios} />
+          <Drawer.Screen name="Studios" component={StudiosNavigator} />
           <Drawer.Screen name="Feedback" component={Feedback} />
           <Drawer.Screen name="About" component={About} />
         </Drawer.Navigator>

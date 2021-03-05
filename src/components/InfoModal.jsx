@@ -14,19 +14,19 @@ const InfoModal = ({ visible, onCancel }) => {
         >          
           <Ionicons name="close-circle" size={24} color={THEME.MAIN_COLOR} />
         </TouchableHighlight>
-        <Text style={styles.header}>Как пользоваться приложением? </Text>
-        <View style={styles.text}>
-          <Text>
-            1. Смотри туториал          
+        <Text style={styles.header}>Это важно! </Text>
+        <View style={styles.textWrap}>
+          <Text style={styles.text}>
+            1. Выбирая студии/секции обращай внимание на возраст, расписание и адрес
           </Text>
-          <Text>           
-            2. Жми start и повторяй движения          
+          <Text style={styles.text}>           
+            2. Выбирая мероприятие обращай внимание на дату
           </Text>
-          <Text>         
-            3. Поставь  себе оценку, двигайся дальше.         
+          <Text style={styles.text}>         
+            3. Доступны платные и бесплатные группы
           </Text>
-          <Text>          
-            4.Удачи и процветания! У тебя все получится!
+          <Text style={styles.text}>          
+            4. Записывайся и присоединяйся к нам!
           </Text>   
         </View>              
       </View>
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
+    marginTop: 20,
     marginBottom: 20,
     fontWeight: 'bold',
     fontSize: 24,
@@ -59,6 +60,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   text: {
+    margin: 10,
+    fontSize: 16,
     textAlign: 'left'
   }
 });
