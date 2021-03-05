@@ -5,6 +5,8 @@ import Studio from '../components/Studio';
 
 const StudiosScreen = ({ navigation }) => {
 
+  
+
   const [studios, setStudios] = React.useState();
 
   const handleOpen = (studio) => {

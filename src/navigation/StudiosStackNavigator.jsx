@@ -39,13 +39,14 @@ export const StudiosNavigator = ({ navigation }) => {
             );
           },
         })}
-        name="Studios"
+        name="AllStudios"
         component={StudiosScreen}
       />
+
       <Stack.Screen
-        options={({ navigation, route }) => ({
+        options={({ route }) => ({
           headerTintColor: THEME.MAIN_COLOR,
-          headerBackTitle: 'Назад',
+          headerBackTitle: 'Все студии',
           headerTitle: ()=><View>
             <Text style={{color: THEME.ORANGE_COLOR, fontFamily: 'open-bold', fontSize: 16}}>{route.params.studioTitle.substr(0, 10)}...</Text>
           </View>,

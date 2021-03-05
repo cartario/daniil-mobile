@@ -1,3 +1,3 @@
 export const ACTION_TYPES = {
-  SET_EVENTS: 'events/SET_EVENTS'
+  SET_STUDIOS: 'events/SET_STUDIOS'
 }
