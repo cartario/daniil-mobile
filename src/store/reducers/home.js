@@ -4,6 +4,7 @@ const initialState = {
   allStudios: [],
   todayStudios: [],
   isLoaded: false,
+  event: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ export const reducer = (state = initialState, action) => {
           .filter((studio) => studio.day === today)
           .sort((a, b) => Number(a.timeFrom.split(':')[0]) - Number(b.timeFrom.split(':')[0])), //сортировка по времени
       };
+
+    case ACTION_TYPES.SET_EVENT:
+      return {...state,
+        event: payload
+      }
     default:
       return state;
   }

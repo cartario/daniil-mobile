@@ -1,26 +1,28 @@
 import React from 'react';
-import { Text, View, ScrollView, StyleSheet, FlatList } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, FlatList, Image, Dimensions } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { Operations } from '../store/operations/studios';
+import { Operations } from '../store/operations/home';
 import BoardItem from '../components/BoardItem';
 import AppLoader from '../components/AppLoader';
 import { THEME } from '../theme';
 import { format } from 'date-fns';
 import ru from 'date-fns/locale/ru';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const { allStudios, isLoaded, todayStudios } = useSelector(({ studios }) => studios);
+  const { allStudios, isLoaded, todayStudios, event } = useSelector(({ home }) => home);
 
   const studiosLusinvoka = todayStudios.filter((studio) => studio.adress === 'Люсиновская, 53');
   const studiosTrofimova = todayStudios.filter((studio) => studio.adress !== 'Люсиновская, 53');
 
-  const handleBoardItemOpen = (obj) => {   
+  const handleBoardItemOpen = (obj) => {
     navigation.navigate('Studios', { screen: 'Studio', params: obj });
   };
 
   React.useEffect(() => {
     dispatch(Operations.fetchStudios());
+    dispatch(Operations.fetchEvent());
   }, []);
 
   if (!allStudios.length) {
@@ -30,13 +32,45 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.wrap}>
       <ScrollView>
-        <Text style={styles.header}>
-          Занятия на сегодня
-          <Text style={styles.headerDate}>
-            {' '}
-            {format(new Date(), 'dd MMMM iiii', { locale: ru })}
+        <View>
+          {!event ? (
+            <View style={styles.noEvent}>
+              <Text style={{ textAlign: 'center' }}>
+                Мы еще готовим для вас ближайшее мероприятие...
+              </Text>
+            </View>
+          ) : (
+            <>
+              <LinearGradient colors={[THEME.MAIN_COLOR, '#01579b']}>
+                <Text style={styles.header}>
+                  Предстоящее мероприятие
+                  <Text style={styles.headerDate}>
+                    {' '}
+                    {format(new Date(event.date), 'dd MMMM iiii', { locale: ru })}
+                  </Text>
+                </Text>
+              </LinearGradient>
+
+              <Image
+                style={{ width: '100%', height: 400 }}
+                source={{ uri: event.posterUrl }}
+                resizeMode="contain"
+              />
+
+              <Text style={styles.eventDescription}>{event.description}</Text>
+            </>
+          )}
+        </View>
+
+        <LinearGradient colors={[THEME.MAIN_COLOR, '#01579b']} style={{ marginTop: 40 }}>
+          <Text style={styles.header}>
+            Занятия на сегодня
+            <Text style={styles.headerDate}>
+              {' '}
+              {format(new Date(), 'dd MMMM iiii', { locale: ru })}
+            </Text>
           </Text>
-        </Text>
+        </LinearGradient>
 
         {studiosLusinvoka.length ? (
           <>
@@ -75,9 +109,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   header: {
-    marginVertical: 20,
+    minHeight: 50,
+    paddingVertical: 20,
+    paddingHorizontal: 5,
     fontSize: 20,
     textAlign: 'center',
+    color: '#fff',
   },
   headerDate: {
     fontWeight: 'bold',
@@ -91,5 +128,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: THEME.MAIN_COLOR,
     fontWeight: 'bold',
+  },
+  noEvent: {
+    paddingTop: 20,
+    textAlign: 'center',
+  },
+  eventDescription: {
+    margin: 0,
+    padding: 10,
   },
 });
