@@ -117,7 +117,7 @@ const FormJoin = ({ type, title, date='' }) => {
       <View style={styles.submit}>
         <Button
           title={isLoading ? 'Отправка...' : 'Отправить'}
-          color="#fff"
+          color={THEME.ORANGE_COLOR}
           disabled={Boolean(!form.formName.length) || isLoading}
           onPress={handleSubmit}
         />

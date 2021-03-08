@@ -8,6 +8,7 @@ import { store } from '../store';
 import { EventsNavigator } from '../navigation/EventsStackNavigator';
 import { StudiosNavigator } from '../navigation/StudiosStackNavigator';
 import { HomeNavigator } from '../navigation/HomeStackNavigator';
+import AboutScreen from '../screens/AboutScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -47,12 +48,8 @@ const MainNavigation = ({ navigation }) => {
             name="Studios"
             component={StudiosNavigator}
           />
-          <Drawer.Screen
-            options={{ drawerLabel: 'Обратная связь' }}
-            name="Feedback"
-            component={Feedback}
-          />
-          <Drawer.Screen options={{ drawerLabel: 'О нас' }} name="About" component={About} />
+         
+          <Drawer.Screen options={{ drawerLabel: 'О нас' }} name="About" component={AboutScreen} />
         </Drawer.Navigator>
       </NavigationContainer>
     </Provider>

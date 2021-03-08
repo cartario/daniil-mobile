@@ -32,7 +32,8 @@
     "redux-thunk": "^2.3.0",
     "expo-linear-gradient": "~8.4.0",
     "expo-notifications": "~0.8.2",
-    "expo-constants": "~9.3.3"
+    "expo-constants": "~9.3.3",
+    "expo-linking": "~2.0.1"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"
