@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView, StyleSheet, FlatList, Image, Dimensions } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, FlatList, Image, RefreshControl } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { Operations } from '../store/operations/home';
 import BoardItem from '../components/BoardItem';
@@ -10,6 +10,7 @@ import ru from 'date-fns/locale/ru';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const HomeScreen = ({ navigation }) => {
+  const [refreshing, setRefreshing] = React.useState(false);
   const dispatch = useDispatch();
   const { allStudios, isLoaded, todayStudios, event } = useSelector(({ home }) => home);
 
@@ -19,6 +20,17 @@ const HomeScreen = ({ navigation }) => {
   const handleBoardItemOpen = (obj) => {
     navigation.navigate('Studios', { screen: 'Studio', params: obj });
   };
+
+  const onRefresh = React.useCallback(async () => {
+    setRefreshing(true);
+    try {
+      dispatch(Operations.fetchStudios());
+      dispatch(Operations.fetchEvent());      
+      setRefreshing(false)
+    } catch (error) {
+      console.error(error);
+    }
+  }, [refreshing]);
 
   React.useEffect(() => {
     dispatch(Operations.fetchStudios());
@@ -31,7 +43,11 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.wrap}>
-      <ScrollView>
+      <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+      >
         <View>
           {!event ? (
             <View style={styles.noEvent}>

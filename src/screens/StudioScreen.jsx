@@ -69,8 +69,6 @@ const StudioScreen = ({ navigation, route }) => {
     return <AppLoader />;
   }
 
-  console.log(targetStudios);
-
   const {
     title,
     imgUrl,
