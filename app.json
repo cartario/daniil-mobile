@@ -23,7 +23,7 @@
     },
     "android": {
       "package": "com.vasiliyzaykov.centerdaniil",
-      "verionCode": 1,
+      "versionCode": 1,
       "permissions": ["READ_CALENDAR"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
