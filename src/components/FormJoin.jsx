@@ -145,8 +145,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   submit: {
-    marginTop: 20,
-    backgroundColor: THEME.ORANGE_COLOR,
+    marginTop: 20,   
+    borderWidth: 1,
+    borderColor: THEME.ORANGE_COLOR
   },
   sendOk: {
     marginTop: 20,

@@ -4,13 +4,14 @@ import { format } from 'date-fns';
 import ru from "date-fns/locale/ru";
 
 const Studio = ({studio, onOpen }) => {
-  const {title, imgUrl, age_min} = studio;
+  const {name, title, imgUrl, age_min} = studio;
+  
   return (
     <TouchableOpacity onPress={onOpen} style={styles.wrap} activeOpacity={0.7}>
       <View style={styles.studio}>
         <ImageBackground source={{ uri: imgUrl }} style={styles.image}>
           <View style={styles.textWrap}>
-            <Text style={styles.title}>{title.substr(0,25)}...</Text>
+            <Text style={styles.title}>{name.substr(0,25)}...</Text>
             {/* <Text style={styles.date}>{price}</Text> */}
             <Text style={styles.date}>{age_min}+</Text>
           </View>

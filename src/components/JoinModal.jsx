@@ -46,10 +46,10 @@ const JoinModal = ({ visible, onCancel, itemId , type}) => {
         {format(new Date(date), 'dd/MMM/yyyy', { locale: ru })}
         </Text>}
 
-        <Text style={styles.headerEvent}>{title}</Text>
+        <Text style={styles.headerEvent}>{item.name || title}</Text>
 
-        {date ? <FormJoin title={item.title} date={item.date}/>   :
-        <FormJoin title={item.title} type={type}/>   
+        {date ? <FormJoin title={title} date={item.date}/>   :
+        <FormJoin title={item.name || item.title} type={type}/>   
         }
 
       </View>

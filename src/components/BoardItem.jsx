@@ -9,8 +9,10 @@ const BoardItem = ({ studio, onOpen }) => {
   const timeFromAdapted = Number(timeFrom.split(':')[0]);
   const timeToAdapted = Number(timeTo.split(':')[0]);
 
-  const isMatch = (time>=timeFromAdapted && time<=timeToAdapted);
-  // const isMatch = 14 >= timeFromAdapted && 14 <= timeToAdapted; //тестовый
+  const isMatch = (time>=timeFromAdapted && time<timeToAdapted);
+
+  // const testTime = 16;
+  // const isMatch = testTime >= timeFromAdapted && testTime < timeToAdapted; //тестовый
 
   const handleClick = () =>{
     const obj = {

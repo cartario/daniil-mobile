@@ -70,6 +70,7 @@ const StudioScreen = ({ navigation, route }) => {
   }
 
   const {
+    name,
     title,
     imgUrl,
     description,
@@ -105,7 +106,7 @@ const StudioScreen = ({ navigation, route }) => {
         }}
       />
 
-      <Text style={{ ...styles.title, ...styles.border }}>{title}</Text>
+      <Text style={{ ...styles.title, ...styles.border }}>{name}</Text>
 
       <Text style={{ ...styles.date, ...styles.border }}>
         {targetStudios.map((studio) => {
