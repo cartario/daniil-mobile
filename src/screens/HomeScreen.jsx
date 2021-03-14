@@ -1,5 +1,14 @@
 import React from 'react';
-import { Text, View, ScrollView, StyleSheet, FlatList, Image, RefreshControl } from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  FlatList,
+  Image,
+  RefreshControl,
+  Platform,
+} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { Operations } from '../store/operations/home';
 import BoardItem from '../components/BoardItem';
@@ -8,6 +17,7 @@ import { THEME } from '../theme';
 import { format } from 'date-fns';
 import ru from 'date-fns/locale/ru';
 import { LinearGradient } from 'expo-linear-gradient';
+import NewEvent from '../components/NewEvent';
 
 const HomeScreen = ({ navigation }) => {
   const [refreshing, setRefreshing] = React.useState(false);
@@ -25,8 +35,8 @@ const HomeScreen = ({ navigation }) => {
     setRefreshing(true);
     try {
       dispatch(Operations.fetchStudios());
-      dispatch(Operations.fetchEvent());      
-      setRefreshing(false)
+      dispatch(Operations.fetchEvent());
+      setRefreshing(false);
     } catch (error) {
       console.error(error);
     }
@@ -43,11 +53,12 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.wrap}>
-      <ScrollView
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }
-      >
+      
+      {Platform.OS === 'ios' && (
+        <NewEvent />
+      )}
+
+      <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
         <View>
           {!event ? (
             <View style={styles.noEvent}>
@@ -152,5 +163,5 @@ const styles = StyleSheet.create({
   eventDescription: {
     margin: 0,
     padding: 10,
-  },
+  }
 });
