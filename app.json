@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Centerdaniil",
-    "slug": "Centerdaniil",
+    "name": "centerdaniil",
+    "slug": "centerdaniil",
     "privacy": "public",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "platforms": ["ios", "android"],
     "icon": "./assets/icon.png",
@@ -20,7 +20,7 @@
     ],
     "ios": {
       "bundleIdentifier": "com.vasiliyzaykov.centerdaniil",
-      "buildNumber": "1.0.0",
+      "buildNumber": "1.1.0",
       "supportsTablet": true
     },
     "android": {
