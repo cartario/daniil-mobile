@@ -34,7 +34,8 @@
     "expo-notifications": "~0.8.2",
     "expo-constants": "~9.3.3",
     "expo-linking": "~2.0.1",
-    "expo-calendar": "~8.6.0"
+    "expo-calendar": "~8.6.0",
+    "expo-barcode-scanner": "~9.1.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

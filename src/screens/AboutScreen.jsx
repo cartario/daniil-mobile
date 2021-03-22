@@ -46,9 +46,11 @@ const AboutScreen = ({ navigation }) => {
   },[isSuccessAdded])
 
   return (
-    <View style={styles.center}>
+    <View style={styles.center}>      
       <Button title="вернуться назад" onPress={() => navigation.goBack()} />
       <Text style={styles.header}>О приложении</Text>
+
+      
 
       <View style={{ alignItems: 'center' }} >
         <Text style={{ fontWeight: 'bold', marginTop: 10 }}>Версия 1.0.0. </Text>

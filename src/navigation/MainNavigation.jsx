@@ -9,6 +9,7 @@ import { EventsNavigator } from '../navigation/EventsStackNavigator';
 import { StudiosNavigator } from '../navigation/StudiosStackNavigator';
 import { HomeNavigator } from '../navigation/HomeStackNavigator';
 import AboutScreen from '../screens/AboutScreen';
+import ScannerScreen from '../screens/ScannerScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -50,6 +51,7 @@ const MainNavigation = ({ navigation }) => {
           />
          
           <Drawer.Screen options={{ drawerLabel: 'О нас' }} name="About" component={AboutScreen} />
+          <Drawer.Screen options={{ drawerLabel: 'Сканер' }} name="Scanner" component={ScannerScreen} />
         </Drawer.Navigator>
       </NavigationContainer>
     </Provider>
