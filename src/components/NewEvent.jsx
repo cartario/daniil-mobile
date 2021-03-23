@@ -7,7 +7,7 @@ const NewEvent = () => {
 
   const handleClickPlus = () => {
     setModalVisible(true)
-  };
+  };  
 
   return (
     <>

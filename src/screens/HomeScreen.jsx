@@ -54,9 +54,9 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.wrap}>
       
-      {Platform.OS === 'ios' && (
+      {/* {Platform.OS === 'ios' && (
         <NewEvent />
-      )}
+      )} */}
 
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
         <View>

@@ -31,7 +31,7 @@ const ScannerScreen = ({ navigation }) => {
     <View style={styles.center}>      
       <Button title="вернуться назад" onPress={() => navigation.goBack()} />
       <Text style={styles.header}>Сканер</Text>
-      <Scanner navigation={navigation}/>
+      <Scanner />
 
         
     </View>

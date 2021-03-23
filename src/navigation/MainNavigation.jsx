@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import {TabNavigator} from '../navigation/TabNavigator';
 import { THEME } from '../theme';
 import { Provider } from 'react-redux';
 import { store } from '../store';
@@ -37,7 +38,7 @@ const MainNavigation = ({ navigation }) => {
           <Drawer.Screen
             options={{ drawerLabel: 'Главная' }}
             name="Home"
-            component={HomeNavigator}
+            component={TabNavigator}
           />
           <Drawer.Screen
             options={{ drawerLabel: 'Мероприятия' }}
@@ -50,8 +51,7 @@ const MainNavigation = ({ navigation }) => {
             component={StudiosNavigator}
           />
          
-          <Drawer.Screen options={{ drawerLabel: 'О нас' }} name="About" component={AboutScreen} />
-          <Drawer.Screen options={{ drawerLabel: 'Сканер' }} name="Scanner" component={ScannerScreen} />
+          <Drawer.Screen options={{ drawerLabel: 'О нас' }} name="About" component={AboutScreen} />         
         </Drawer.Navigator>
       </NavigationContainer>
     </Provider>

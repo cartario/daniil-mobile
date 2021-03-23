@@ -18,6 +18,7 @@ import ru from 'date-fns/locale/ru';
 import { THEME } from '../theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Calendar from '../components/Calendar';
+import AddToBooked from '../components/AddToBooked';
 
 const EventScreen = ({ navigation, route }) => {
   const { eventId } = route.params;
@@ -71,9 +72,14 @@ const EventScreen = ({ navigation, route }) => {
       />
 
       {Platform.OS === 'ios' && (
-        <View style={{ ...styles.title }}>
-          <Calendar date={date} title={title} />
-        </View>
+        <>
+          <View>
+            <AddToBooked/>
+          </View>
+          <View style={{ ...styles.title }}>
+            <Calendar date={date} title={title} />
+          </View>
+        </>
       )}
       <Text style={{ ...styles.title, ...styles.border }}>{title}</Text>
       <Text style={{ ...styles.date, ...styles.border }}>
@@ -109,15 +115,12 @@ const EventScreen = ({ navigation, route }) => {
         <Text></Text>
       )}
 
-
-
       <View style={{ marginTop: 30 }}>
         <Text style={{ ...styles.footer }}>Разработка и дизайн приложения:</Text>
         <Text style={{ ...styles.footer }}>Василий Зайков</Text>
         <Text style={{ ...styles.footer }}>+7-926-491-53-49, cartario@yandex.ru</Text>
         <Text style={{ ...styles.footer }}>Москва, 2021</Text>
       </View>
-      
     </ScrollView>
   );
 };
@@ -140,7 +143,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   title: {
-    marginTop: 50,
+    // marginTop: 50,
     textAlign: 'center',
     fontSize: 20,
     fontFamily: 'open-bold',
